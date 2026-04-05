@@ -1,0 +1,40 @@
+data:
+  patch_size: 9
+  mode: unlabeled_only
+seed: 7
+split:
+  mode: image
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+dataloader_train:
+  batch_size: 4096
+  num_workers: 4
+  shuffle: True
+dataloader_val:
+  batch_size: 4096
+  num_workers: 4
+  shuffle: False
+autoencoder:
+  n_input_channels: 8
+  embedding_size: 8
+  model_type: conv
+  conv_channels: [48, 96, 192]
+  activation: relu
+  dropout_rate: 0.0
+  denoising: true
+  noise_std: 0.05
+optimizer:
+  name: adamw
+  lr: 0.001
+  weight_decay: 0.00001
+trainer:
+  max_epochs: 100
+  log_every_n_steps: 500
+output:
+  dirpath: '../results/exp_029'
+    # you should use your name and your experiment number here
+wandb:
+  project: 'lab2-autoencoder'
+  name: 'exp_029_pretrain'
+    # you should use your name and your experiment number here

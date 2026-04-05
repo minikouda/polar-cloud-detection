@@ -1,0 +1,13 @@
+- Ricardo Perez Castillo:
+  - Completed Part 1: Exploratory Data Analysis and communicated results with team members.
+  - Completed Part 2: Feature Engineering, creating the train/test dataset with one of the two versions of the autoenconder, and a perturbed dataset for stability analysis. 
+  - Completed the report for Part 1 and Part 3 (Section 3.3 not included).
+
+- Chun-Kai Hsu:
+  - Transfer Learning: Improved the autoencoder architecture and training process for the feature engineering pipeline, and reported the results.
+
+- Shizhe Zhang
+  - Developed the modeling part (various models, mainly ensemble models) and modeling section in the report. Organized the repo for submission and created run.sh.
+
+- Gongyao Xu
+  - Developed the modeling part (various models, including Logistic Regression and SVM) and modeling section in the report. Cleaned up the report wiht final touches.

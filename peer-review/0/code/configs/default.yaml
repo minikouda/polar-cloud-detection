@@ -1,0 +1,41 @@
+seed: 42  # for reproducible train/val split by images
+# For get_embedding.py: only save CSVs for the 3 labeled images (1-based indices 15, 17, 18).
+save_image_indices: [15, 17, 18]
+data:
+  patch_size: 9
+  # Pretrain uses 161 unlabeled images (3 labeled excluded in run_autoencoder via exclude_labeled_images).
+  # Use all patches (no cap) for pretrain; set to null.
+  max_images: null
+  max_patches_per_image: null
+  max_patches: null
+dataloader_train:
+  batch_size: 1024
+  num_workers: 0
+  shuffle: True
+dataloader_val:
+  batch_size: 1024
+  num_workers: 0
+  shuffle: False
+autoencoder:
+  n_input_channels: 8
+  embedding_size: 8
+optimizer:
+  lr: 0.001
+trainer:
+  max_epochs: 20
+  log_every_n_steps: 50
+  accelerator: "gpu"
+  devices: 1
+checkpoint:
+  save_top_k: 3
+  monitor: 'val_loss'
+  mode: 'min'
+  filename: 'default-{epoch:03d}'
+    # you should change "default" to something else
+    # for your experiments
+  dirpath: 'checkpoints'
+wandb:
+  project: 'lab2-autoencoder'
+  name: 'default'
+    # you should change "default" to something else
+    # for your experiments

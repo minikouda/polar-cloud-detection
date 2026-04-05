@@ -1,0 +1,41 @@
+autoencoder:
+  activation: relu
+  conv_channels:
+  - 32
+  - 64
+  - 128
+  denoising: true
+  dropout_rate: 0.1
+  embedding_size: 8
+  model_type: conv
+  n_input_channels: 8
+  noise_std: 0.05
+data:
+  mode: unlabeled_only
+  patch_size: 9
+dataloader_train:
+  batch_size: 4096
+  num_workers: 4
+  shuffle: true
+dataloader_val:
+  batch_size: 4096
+  num_workers: 4
+  shuffle: false
+optimizer:
+  lr: 0.0001
+  name: adamw
+  weight_decay: 1.0e-05
+output:
+  dirpath: ../results/exp_035
+seed: 7
+split:
+  mode: image
+  test_ratio: 0.1
+  train_ratio: 0.8
+  val_ratio: 0.1
+trainer:
+  log_every_n_steps: 500
+  max_epochs: 100
+wandb:
+  name: exp_035_pretrain
+  project: lab2-autoencoder

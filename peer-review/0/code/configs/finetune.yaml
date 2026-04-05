@@ -1,0 +1,39 @@
+# Finetune: load pretrained checkpoint and train only on the 3 labeled images (reconstruction, no labels).
+# Run after pretraining: python run_autoencoder.py configs/finetune.yaml
+# Then use the best checkpoint from checkpoints_finetune/ in get_embedding.py.
+seed: 42
+data:
+  patch_size: 9
+  only_labeled_images: true   # only O012791, O013257, O013490
+  max_images: null
+  max_patches_per_image: null
+  max_patches: null
+# Path to pretrained checkpoint (relative to code/ or absolute). Update after your pretrain run.
+checkpoint_resume: "checkpoints/default-epoch=017.ckpt"  # best val_loss from pretrain; update if different
+dataloader_train:
+  batch_size: 1024
+  num_workers: 0
+  shuffle: True
+dataloader_val:
+  batch_size: 1024
+  num_workers: 0
+  shuffle: False
+autoencoder:
+  n_input_channels: 8
+  embedding_size: 8
+optimizer:
+  lr: 0.0001   # lower lr for finetuning
+trainer:
+  max_epochs: 10
+  log_every_n_steps: 50
+  accelerator: "gpu"
+  devices: 1
+checkpoint:
+  save_top_k: 3
+  monitor: 'val_loss'
+  mode: 'min'
+  filename: 'finetune-{epoch:03d}'
+  dirpath: 'checkpoints_finetune'
+wandb:
+  project: 'lab2-autoencoder'
+  name: 'finetune'
