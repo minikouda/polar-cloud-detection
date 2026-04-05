@@ -139,7 +139,7 @@ With only 3 labeled images (~207,000 labeled pixels), we pre-train a convolution
 
 ```bash
 conda env create -f code/environment.yaml
-conda activate <env_name>
+conda activate stat214
 ```
 
 **Run the full pipeline:**
